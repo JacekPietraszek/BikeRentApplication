@@ -12,13 +12,22 @@ public class BikeRepository {
 
     //dependency injection constructor
     public BikeRepository(EntityManager entityManager) {
+
         this.entityManager = entityManager;
     }
 
     //saves bike in database
     @Transactional
     public void save(Bike bike) {
-        entityManager.persist(bike);
+        if (exists(bike)) {
+            entityManager.merge(bike);
+        } else {
+            entityManager.persist(bike);
+        }
+    }
+
+    private boolean exists(Bike bike) {
+        return entityManager.find(Bike.class, bike.getId()) != null;
     }
 
     public Optional<Bike> findById(Long id) {
