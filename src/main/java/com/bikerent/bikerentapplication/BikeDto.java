@@ -1,13 +1,13 @@
 package com.bikerent.bikerentapplication;
 
-public class NewBikeDto {
+public class BikeDto {
     private Long id;
     private String model;
     private String serialNo;
     private double hourPrice;
     private double dayPrice;
 
-    public NewBikeDto(Long id, String model, String serialNo, double hourPrice, double dayPrice) {
+    public BikeDto(Long id, String model, String serialNo, double hourPrice, double dayPrice) {
         this.id = id;
         this.model = model;
         this.serialNo = serialNo;
